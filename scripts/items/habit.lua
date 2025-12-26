@@ -76,7 +76,8 @@ return function(mod, utils)
 
         player:SetActiveCharge(finalMain, slot)
         if player.SetBatteryCharge then
-            player:SetBatteryCharge(finalBat)
+            -- The Battery(오버차지) 슬롯까지 정확히 반영 (Sharp Plug 등과 충돌 방지)
+            player:SetBatteryCharge(finalBat, slot)
         end
     end
     mod:AddCallback(ModCallbacks.MC_POST_UPDATE, mod.OnUpdate_Habit)
